@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {
+      border-color: transparent red transparent transparent;
+      border-style: solid;
+      border-width: 100px 50px 0 0;
+    }
+
+    .price {
+      width: 160px;
+      height: 24px;
+      border: 1px solid red;
+      margin: 50px auto;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .left {
+      position: relative;
+      float: left;
+      width: 90px;
+      height: 100%;
+      background-color: red;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .left i {
+      position: absolute;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-color: transparent white transparent transparent;
+      border-style: solid;
+      border-width: 24px 12px 0 0;
+    }
+
+    .right {
+      text-decoration: line-through;
+      color: rgba(178, 184, 188, 0.737);
+      margin-left: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1"></div>
+  <div class="price">
+    <span class="left">1650
+      <i></i>
+    </span>
+    <span class="right">1800</span>
+  </div>
+</body>
+
+</html>

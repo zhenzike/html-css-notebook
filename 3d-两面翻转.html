@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            perspective: 400px;
+        }
+
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+
+
+        .front,
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .front {
+            
+            background-color: pink;
+            /* 如果这里不设置z轴上的坐标，会导致两个盒子层叠在同一水平面上，而覆盖另一个，无法正常翻转 */
+            transform: translateZ(1px);
+        }
+
+        .back {
+            background-color: purple;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="front">郭少</div>
+        <div class="back">陈大猪</div>
+    </div>
+</body>
+
+</html>
