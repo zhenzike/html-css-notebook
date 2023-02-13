@@ -319,6 +319,10 @@ span:意为跨度、跨距
 
 ```html
 <table>   <!--<table></table> 用来定义表格的标签 -->
+    <tr>
+        <th>姓名</th><!--  <th></th>用来定义表头的标签 -->
+        。。。
+    </tr>
     <tr>  <!--<tr> </tr>  用来定义表格中的行，必须嵌套在<table></table>中   -->
         <td>单元格内文字</td>  <!--<td></td> 用于定义表格中的单元格，必须嵌套在<tr> </tr>标签中   -->
         。。。
@@ -457,7 +461,6 @@ th: 是table head 的缩写
     <dd>解释1</dd>
     <dd>解释2</dd>
 </dl>
-
 **特点**：1.< dl>< /dl>里面只能包含< dt>和< dd>
 
 ​           2.< dt>和< dd>个数没有限制，经常是一个< dt>对应多个< dd>
@@ -1475,7 +1478,7 @@ input[type^=pass]{}//选择了type属性且值以pass开头的标签
 
 ==注意==:
 
-- **E:nth-child(n)中：n可以是数字，关键字和公式**
+- **E:nth-child(n)中：n可以是数字，关键字和公式**【从一开始计数，而不是0】
 
   - n 如果是数字，就是选择第n个子元素，里面数字从1开始...
 
@@ -1803,6 +1806,13 @@ background-position:x y;
   background-position: 20px center;//水平距离左边20px,垂直居中
   background-position: center 20px;//水平居中，垂直距离上边20px,
   ```
+
+#### 4.4.3 基于容器大小伸缩
+
+```css
+ background-size: cover;
+```
+
 
 
 ### 4.5 固定背景-attachment
@@ -2302,7 +2312,7 @@ float属性用于创建浮动框，将其移动到一边，直到左边缘或右
 
 #### (1) 额外标签法(隔墙法)
 
-额外标签法会在==浮动元素末尾==添加一个空的标签。例如< div style=" clear:both”>< /div>，或者其他标签(如< br />等)。
+额外标签法会在==浮动元素末尾==添加一个空的标签。例如< div style=" clear:both">< /div>，或者其他标签(如< br />等)。
 
 - 优点:通俗易懂，书写方便
 - 缺点︰添加许多无意义的标签，结构化较差
@@ -3059,7 +3069,7 @@ ellipsis：省略号
 overflow : hidden;
 text-overflow: ellipsis;
 /*弹性伸缩盒子模型显示*/
-display: -webkit-box.;
+display: -webkit-box;
 /*限制在一个块元素显示的文本的行数*/
 -webkit-line-clamp: 2;
 /*设置或检索伸缩盒对象的子元素的排列方式*/
@@ -3764,6 +3774,7 @@ animation-timing-function :规定动画的速度曲线，默认是“ease"
 - transform:rotateY(4sdeg) : 沿着y轴正方向旋转45deg
 - transform:rotatez(45deg) : 沿着Z轴正方向旋转45deg
 - transform:rotate3d(x,y,z,deg) : 沿着自定义轴旋转deg为角度（了解即可)
+- backface-visibility: hidden 当图片处于背面时，不可见
 
 ### 4.1 旋转方向
 
@@ -3774,7 +3785,7 @@ animation-timing-function :规定动画的速度曲线，默认是“ease"
 
 ## 5. 3D呈现 transfrom-style
 
-transfrom-style的作用：
+transform-style的作用：
 
 1. 控制子元素是否开启三维立体环境。
 2. transfofm-style : flat子元素不开启3d立体空间默认的
