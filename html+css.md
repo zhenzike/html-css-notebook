@@ -3290,7 +3290,100 @@ display: -webkit-box;
 
 微软雅黑\5FAE\8F6F\96CS9ED1
 
+## 9. FC  【BFC与IFC】
 
+FC的全称是Formatting Context（**格式化上下文**），元素在标准流里面都是属于一个FC的;
+
+- 块级元素的布局属于Block Formatting Context (BFC)
+  - 也就是block level box==【块级元素】都是在**BFC**中布局==的;
+
+- 行内级元素的布局属于Inline Formatting Context (IFC)
+  - 而inline level box==【行内元素】都是在**IFC**中布局==的;
+
+### 9.1 BFC
+
+#### 9.1.1 哪些常见情况下会形成BFC
+
+- 根元素(< html>)
+- 浮动元素(元素的float不是none)
+- 绝对定位元素(元素的position 为 absolute 或 fixed)
+- 行内块元素(元素的display 为 inline-block)
+- 表格单元格(元素的display为 table-cell,HTML表格单元格默认为该值)，表格标题(元素的display为 table-caption，HTML表格标题默认为该值)
+- 匿名表格单元格元素(元素的display 为 table、table-row、table-row-group、table-header-group、table-footer-group(分别是HTML tablerow、tbody、thead、tfoot的默认属性)或inline-table)
+- overflow计算值(Computed)不为visible的块元素
+- 弹性元素(display 为flex或 inline-flex元素的直接子元素)
+- 网格元素(display 为 grid 或inline-grid元素的直接子元素)
+- display值为 flow-root 的元素
+
+#### 9.1.2 BFC的功能
+
+- ==在一个BFC中的两个相邻的块级元素的垂直方向上的外边距会折叠==。在一个BFC
+- 在BFC中，box会在垂直方向上一个挨着一个的排布;
+- 垂直方向的间距由margin属性决定;
+- 在BFC中，每个元素的左边缘是紧挨着包含块的左边缘的;
+
+```html
+由于html本身就是一个BFC，因此在html下的相邻的box1，box2在垂直方向的外边距会折叠，因此它们的实际距离只有50px
+<!------------------->
+.box1{
+    height:200px;
+    margin-bottom:50px;
+}
+
+.box2{
+    height:200px;
+    margin-top:20px;
+}
+<!------------------->
+<html>
+<div class="box1"></div>
+<div class="box2"></div>
+</html>
+```
+
+#### 9.1.3 作用1-解决外边距折叠
+
+```html
+<!------------------->
+.contain{
+<!--使得元素contain形成一个BFC，由于它包裹着box1导致box1与box2不再处于同一个BFC下因此外边距不会折叠----->
+<!--但是contain与box2如今都是属于html下相邻的块级元素了，因此若给contain添加外边距仍旧会折叠--->
+     overflow:auto;  
+}
+
+.box1{
+    height:200px;
+    margin-bottom:50px;
+}
+
+.box2{
+    height:200px;
+    margin-top:20px;
+}
+<!------------------->
+<html>
+    <div class='contain'>    
+        <div class="box1"></div>
+    </div>
+
+<div class="box2"></div>
+</html>
+```
+
+#### 9.1.4 作用2-解决浮动高度塌陷
+
+- BFC解决高度塌陷需要满足两个条件:
+  - 浮动元素的父元素触发BFC，形成独立的块级格式化上下文(Block Formatting Context) ;浮动元素的父元素的高度是auto的;
+
+- BFC的高度是auto的情况下，是如下方法计算高度的
+
+  - 如果它==只有==内联级别的子元素，则高度是最顶行内元素的顶部与最底层行内元素的底部之间的距离。
+
+  - 如果它有块级子元素，则高度是顶层块级子元素的上边缘与最底层块级子元素的底部边缘之间的距离。
+
+  - 如果有绝对定位元素，将被忽略;
+
+  - 如果有浮动元素，那么BFC会增加高度以包括这些浮动元素的下边缘
 
 # 十一、CSS3其他新增特性
 
